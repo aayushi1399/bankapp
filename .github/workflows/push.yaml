@@ -1,0 +1,17 @@
+name: Monitor-file
+
+on:
+  push:
+    paths:
+      - 'run.txt'         # Trigger on any .txt file
+jobs:
+  file-push-job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: copy file to server
+        run:  | 
+          cp run.txt /home/ec2-user/githubfile
